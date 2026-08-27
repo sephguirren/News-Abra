@@ -1,147 +1,143 @@
-⚡ ABRA.NEXUS // Cyber-Local News Grid v1.0
+About The Project
 
-CLASSIFIED INTELLIGENCE FEED // CORDILLERA ADMINISTRATIVE REGION (CAR)
-A high-throughput, low-latency news telemetry engine serving Abra Province and its 27 municipal sectors.
+ABRA.NEXUS aggregates regional feeds from major reporting networks (GMA, ABS-CBN, PNA) alongside localized search parameters to index news telemetry across Bangued, Bucay, Dolores, Peñarrubia, Tayum, La Paz, San Juan, and all remaining sectors of Abra, Philippines.
 
-🌌 Overview
+Key Features:
 
-ABRA.NEXUS is an automated, real-time news aggregation grid built on FastAPI. Designed to interface seamlessly with modern mobile neural HUDs (React Native), it extracts hyper-local news telemetry across major regional media networks (GMA, ABS-CBN, PNA) and localized communication channels (Damdamag Abra).
+Hyper-Local Targeting: Filter news by specific municipality or news source.
 
-Equipped with volatile TTL memory caching, automated thumbnail parsing engines, and ISO timestamp mutation pipelines, it delivers hyper-structured JSON payloads directly to mobile endpoints.
+Smart Data Extraction: HTML parsing via BeautifulSoup to automatically retrieve thumbnail images.
 
-       [ Regional News Sources ] 
-      (Google / GMA / ABS-CBN / PNA)
-                    │
-                    ▼
-          ┌───────────────────┐
-          │   ABRA.NEXUS      │
-          │   (FastAPI Engine)│
-          └─────────┬─────────┘
-                    │  ◄── [ 15-Min Volatile TTLCache Matrix ]
-                    │  ◄── [ BeautifulSoup DOM Image Extractor ]
-                    ▼
-     [ React Native Mobile Client ]
+TTL Caching: Built-in 15-minute memory cache to ensure ultra-fast response times and prevent upstream blocking.
+
+React Native Ready: Cleaned ISO timestamps, trimmed article titles, and pre-configured CORS middleware.
+
+Built With
+
+Getting Started
+
+Follow these instructions to set up and run the local development server on your machine.
+
+Prerequisites
+
+Python 3.8+ installed on your system.
+
+python --version
 
 
-🛠 Core Systems & Tech Stack
+Installation
 
-System Component
+Clone the repository
 
-Technology
-
-Operational Function
-
-Core Framework
-
-FastAPI
-
-Asynchronous, high-performance web API framework
-
-Server Engine
-
-Uvicorn
-
-Lightning-fast ASGI server implementation
-
-Data Ingestion
-
-feedparser
-
-Real-time RSS/Atom feed signal parsing
-
-HTML Mutation
-
-BeautifulSoup4
-
-DOM element extraction for media assets (Thumbnails)
-
-Memory Matrix
-
-cachetools (TTLCache)
-
-900s (15-min) volatile cache to prevent source throttling
-
-Security Protocol
-
-CORSMiddleware
-
-Universal cross-origin access for mobile clients
-
-📡 Telemetry Endpoints
-
-GET /
-
-Handshake Protocol: Verifies system operational status and links to interactive diagnostic UI (/docs).
-
-GET /api/news/latest
-
-Primary Provincial Feed: Streams broad, real-time news telemetry across the entirety of Abra Province.
-
-GET /api/news/municipality/{municipality_name}
-
-Sector-Specific Scanning: Targets municipal nodes across Abra:
-
-Bangued | Bucay | Dolores | Peñarrubia | Tayum ... and all 27 municipal sectors.
-
-GET /api/news/source/{source_name}
-
-Domain Isolation: Filters telemetry streams to specific media channels:
-
-gmanetwork.com | news.abs-cbn.com | pna.gov.ph
-
-⚡ Systems Initialization Protocol
-
-Execute these commands in your local terminal sequence to activate the API node:
-
-1. Clone & Access Directory
-
-git clone https://github.com/YourUsername/abra-news-api.git
+git clone https://github.com/TeenTech/abra-news-api.git
 cd abra-news-api
 
 
-2. Activate Virtual Subsystem
+Set up a virtual environment
 
-# Windows
+Windows:
+
 python -m venv venv
 venv\Scripts\activate
 
-# macOS / Linux
+
+Mac/Linux:
+
 python3 -m venv venv
 source venv/bin/activate
 
 
-3. Inject Dependencies
+Install dependencies
 
 pip install -r requirements.txt
 
 
-4. Ignite Core Engine
+Launch the FastAPI Server
 
 uvicorn main:app --reload
 
 
-🛸 Diagnostic Dashboard: Access the visual swagger UI at http://127.0.0.1:8000/docs
+Access Interactive API Docs
+Open http://127.0.0.1:8000/docs in your web browser.
 
-🧬 Data Normalization & Cache Matrix
+Usage
 
-15-Minute Volatile Memory Matrix: Caches up to 100 unique search query keys for 900 seconds (TTLCache), dramatically accelerating response times to sub-10ms for recurring mobile queries.
+Endpoint Telemetry Overview
 
-DOM Asset Extraction: Scans raw HTML payloads using BeautifulSoup to extract hidden <img> thumbnail URLs, serving a clean "image_url" key in every JSON object.
+Endpoint
 
-ISO-8601 Timestamp Standard: Converts legacy string dates into standardized UTC strings (YYYY-MM-DDTHH:MM:SSZ) for seamless parsing in JavaScript/React Native.
+Method
 
-🌌 System Roadmap
+Description
 
-[x] Phase 1: Core RSS Telemetry Grid & FastAPI Architecture
+/
 
-[x] Phase 2: DOM Image Extraction & TTLCache Optimization
+GET
 
-[ ] Phase 3: Orbital Uplink (Cloud Deployment via Render / Railway)
+System health check and root landing
 
-[ ] Phase 4: React Native HUD Frontend Integration
+/api/news/latest
 
-👥 Grid Operators
+GET
 
-Lead Developer & System Architect: @YourUsername
+Fetches general Abra province news telemetry
 
-Maintained under the Cordillera Neural Network Protocol.
+/api/news/municipality/{name}
+
+GET
+
+Filters news by municipality (e.g., Bangued, Bucay, Dolores)
+
+/api/news/source/{domain}
+
+GET
+
+Filters news by target domain (e.g., gmanetwork.com)
+
+Roadmap
+
+[x] Initial RSS feed aggregation logic
+
+[x] CORS middleware integration for mobile client support
+
+[x] BeautifulSoup thumbnail image extraction
+
+[x] 15-minute TTL query caching engine
+
+[x] React Native client application (App.js)
+
+[ ] Cloud deployment to Render / Railway
+
+Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+Fork the Project
+
+Create your Feature Branch (git checkout -b feature/AmazingFeature)
+
+Commit your Changes (git commit -m 'Add some AmazingFeature')
+
+Push to the Branch (git push origin feature/AmazingFeature)
+
+Open a Pull Request
+
+License
+
+Distributed under the MIT License.
+
+Contact
+
+Creator: TeenTech
+
+Project Link: https://github.com/TeenTech/abra-news-api
+
+Acknowledgments
+
+FastAPI Framework
+
+Feedparser Library
+
+Beautiful Soup 4
+
+Best-README-Template
