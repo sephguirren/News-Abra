@@ -1,112 +1,74 @@
 About The Project
 
-ABRA.NEXUS aggregates regional feeds from major reporting networks (GMA, ABS-CBN, PNA) alongside localized search parameters to index news telemetry across Bangued, Bucay, Dolores, Peñarrubia, Tayum, La Paz, San Juan, and all remaining sectors of Abra, Philippines.
+ABRA.NEXUS aggregates regional feeds from major reporting networks alongside localized search parameters to index news telemetry across Bangued, Bucay, Dolores, Peñarrubia, Tayum, La Paz, San Juan, and all remaining sectors of Abra, Philippines.
 
 Key Features:
 
 Hyper-Local Targeting: Filter news by specific municipality or news source.
 
-Smart Data Extraction: HTML parsing via BeautifulSoup to automatically retrieve thumbnail images.
+Smart Data Extraction: HTML parsing to automatically retrieve thumbnail images.
 
-TTL Caching: Built-in 15-minute memory cache to ensure ultra-fast response times and prevent upstream blocking.
-
-React Native Ready: Cleaned ISO timestamps, trimmed article titles, and pre-configured CORS middleware.
+TTL Caching: Built-in 15-minute memory cache to ensure ultra-fast response times.
 
 Built With
 
 Getting Started
 
-Follow these instructions to set up and run the local development server on your machine.
+To get a local copy up and running follow these simple steps.
 
 Prerequisites
 
-Python 3.8+ installed on your system.
+Python 3.8+
 
 python --version
 
 
 Installation
 
-Clone the repository
+Clone the repo
 
 git clone https://github.com/TeenTech/abra-news-api.git
-cd abra-news-api
 
 
-Set up a virtual environment
-
-Windows:
+Create and activate a virtual environment
 
 python -m venv venv
 venv\Scripts\activate
 
 
-Mac/Linux:
-
-python3 -m venv venv
-source venv/bin/activate
-
-
-Install dependencies
+Install Python packages
 
 pip install -r requirements.txt
 
 
-Launch the FastAPI Server
+Start the server
 
 uvicorn main:app --reload
 
 
-Access Interactive API Docs
-Open http://127.0.0.1:8000/docs in your web browser.
-
 Usage
 
-Endpoint Telemetry Overview
+Use the interactive API documentation to test the endpoints.
 
-Endpoint
+Open your browser to http://127.0.0.1:8000/docs
 
-Method
+Expand the /api/news/municipality/{municipality_name} endpoint.
 
-Description
-
-/
-
-GET
-
-System health check and root landing
-
-/api/news/latest
-
-GET
-
-Fetches general Abra province news telemetry
-
-/api/news/municipality/{name}
-
-GET
-
-Filters news by municipality (e.g., Bangued, Bucay, Dolores)
-
-/api/news/source/{domain}
-
-GET
-
-Filters news by target domain (e.g., gmanetwork.com)
+Click "Try it out", enter a municipality like Bucay, and execute.
 
 Roadmap
 
 [x] Initial RSS feed aggregation logic
 
-[x] CORS middleware integration for mobile client support
+[x] CORS middleware integration
 
 [x] BeautifulSoup thumbnail image extraction
 
 [x] 15-minute TTL query caching engine
 
-[x] React Native client application (App.js)
-
 [ ] Cloud deployment to Render / Railway
+
+[ ] Complete React Native mobile client
 
 Contributing
 
@@ -128,7 +90,7 @@ Distributed under the MIT License.
 
 Contact
 
-Creator: TeenTech
+TeenTech - Project Lead
 
 Project Link: https://github.com/TeenTech/abra-news-api
 
@@ -139,5 +101,3 @@ FastAPI Framework
 Feedparser Library
 
 Beautiful Soup 4
-
-Best-README-Template
